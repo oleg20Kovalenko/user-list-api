@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="list-user">
+    <div class="item-user" *ngFor="let item of users">
+      <img class="img" src="{{ item.avatar }}" alt="" />
+      <p class="name">{{ item.first_name }} {{ item.last_name }}</p>
+      <p>{{ item.email }}</p>
+    </div>
+  </div>
+  <div class="pagination">
+    <a
+      class="link"
+      *ngFor="let item of [].constructor(totalPages); let page = index"
+      (click)="changePage(page + 1)"
+      [class.active]="checkNumbOfCurrentPage(page + 1)"
+      href="#"
+    >
+      {{ page + 1 }}
+    </a>
+  </div>
+</div>
+<div class="loader" *ngIf="isLoading | async">
+  <div class="lds-ring">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
